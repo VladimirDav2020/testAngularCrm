@@ -1,0 +1,62 @@
+<mat-card class="card">
+  <img class="card-img" src="../../../assets/img/chevrolet.jpg" alt="Car">
+  <div class="right-card">
+      <mat-card-content>
+        <mat-card-title class="card-title">
+          <div class="card-name">{{ data.car['Name'] }}</div>
+          <div class="card-price">{{ data.car['Price'] | currency: data.car['Currency'] }}</div>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <div class="card-sub-title">
+            <span>{{ data.car['Origin'] }}</span>
+             - 
+            <span>{{ data.car['Year'] | date }}</span>
+          </div>
+        </mat-card-subtitle>
+        <div class="card-info">
+          <div class="card-info-field">
+            <span>Количество лошадиных сил:</span>
+            <span>{{ data.car['Horsepower'] }}</span>
+          </div>
+          <div class="card-info-field">
+            <span>Количество цилиндров:</span>
+            <span>{{ data.car['Cylinders'] }}</span>
+          </div>
+          <div class="card-info-field">
+            <span>Ускорение:</span>
+            <span>{{ data.car['Acceleration'] }}</span>
+          </div>
+          <div class="card-info-field">
+            <span>Объем двигателя:</span>
+            <span>{{ data.car['Displacement'] }}</span>
+          </div>
+          <div class="card-info-field">
+            <span>Миль на галлон топлива:</span>
+            <span>{{ data.car['Miles_per_Gallon'] }}</span>
+          </div>
+          <div class="card-info-field">
+            <span>Вес авто:</span>
+            <span>{{ data.car['Weight_in_lbs'] }} <span> lbs</span></span>
+          </div>
+        </div>
+        <div class="close-card" mat-dialog-close>
+          Закрыть
+        </div>
+      </mat-card-content>
+  </div>
+</mat-card>
+
+
+<!-- Acceleration: 12-
+  Cylinders: 8-
+  Displacement: 307-
+  Horsepower: 130-
+  Miles_per_Gallon: 18-
+  Weight_in_lbs: 3504
+  id: 1 -->
+  
+  <!-- Origin: "USA"-
+    Year: "1970-01-01"-
+    Currency: "USD"-
+  Name: "chevrolet chevelle malibu"-
+Price: 7000- -->

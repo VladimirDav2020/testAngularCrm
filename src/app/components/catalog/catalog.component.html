@@ -1,0 +1,48 @@
+<div *ngIf="loading" class="loading">
+  <h1><mat-spinner></mat-spinner></h1>
+</div>
+<div class="catalog-content" *ngIf="!loading">
+  <header>
+    <div class="search">
+      <mat-form-field class="search-field" appearance="fill">
+        <mat-label>Поиск машины</mat-label>
+        <input matInput type="text" [(ngModel)]="searchValue" [disabled]="selectValue == ''">
+        <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Выберите тип поля</mat-label>
+        <mat-select disableRipple [(ngModel)]="selectValue">
+          <mat-option *ngFor="let option of optionsArrForSelect" value="{{option.value}}">{{ option.option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="button-group">
+        <button mat-raised-button [routerLink]="['/addcar']">Добавить машину</button>
+    </div>
+  </header>
+
+  <main class="catalog-cards">
+    <div *ngFor="let car of carsList | myFilter: [searchValue, selectValue]" (click)="openCardDialog(car)">
+      <mat-card class="card">
+        <mat-card-header>
+          <div>
+            <mat-card-title class="card-title">{{ car['Name'] }}</mat-card-title>
+            <mat-card-subtitle><span>{{ car['Origin'] }}</span> - <span>{{ car['Year'] | date }}</span></mat-card-subtitle>
+          </div>
+          <div>
+            {{ car['Price'] | currency: car['Currency'] }}
+          </div>
+        </mat-card-header>
+        <img class="card-img" mat-card-image src="../../../assets/img/chevrolet.jpg" alt="Car">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions class="button-group">
+          <button mat-button [routerLink]="['/editcar', car['id']]"><mat-icon>edit</mat-icon></button>
+          <button mat-button (click)="openDeleteDialog($event, car.id)"><mat-icon>delete</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </main>
+<div>

@@ -1,0 +1,129 @@
+@import '../../../styles.scss';
+@import '../../../assets/variablesColor.scss';
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.catalog-content {
+  padding-bottom: 30px;
+}
+
+.search-field {
+  width: 300px;
+  margin-right: 20px;
+}
+
+.catalog-cards {
+  padding: 10px;
+  display: grid;
+  max-height: 820px;
+  gap: 20px;
+  justify-items: center;
+  grid-template-columns: 400px 400px 400px;
+  margin: 0 auto;
+  width: fit-content;
+
+  overflow-y: scroll;
+}
+.catalog-cards::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background-color: $main-color;
+}
+
+.catalog-cards::-webkit-scrollbar-thumb {
+  background-color: $second-color;
+}
+
+.card {
+  display: inline-block;
+  max-width: 400px;
+  color: $text-color;
+  border: 1px solid $second-color;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all .4s;
+  &:hover {
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px $second-color;
+    transition: all .3s;
+    background-color: $second-color;
+    color: $text-color;
+    button {
+      color: $text-color;
+    }
+    .card-img {
+      transform: scale(1.04);
+      transition: all .3s;
+    }
+  }
+}
+
+.card-title {
+  text-transform: capitalize;
+  font-size: 18px !important;
+}
+
+.card-img {
+  display: block;
+  height: 280px;
+  width: 398px;
+  transition: all .3s;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-car {
+  margin-right: 20px;
+}
+
+button {
+  transition: all .1s;
+  &:hover {
+    color: $second-color;
+    transition: all .1s;
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+::ng-deep .mat-card-header-text {
+  display: none !important;
+}
+
+::ng-deep .mat-card-header {
+  justify-content: space-between;
+  align-items: start;
+}
+
+::ng-deep .mat-button-base {
+  padding: 5px !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  color: $second-color !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  transition: all .1s;
+  background-color: $second-color !important;
+}
+
+@media (max-height: 700px) {
+  .catalog-cards {
+    max-height: 559px;
+  }
+}

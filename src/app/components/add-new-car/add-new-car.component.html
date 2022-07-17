@@ -1,0 +1,76 @@
+<div class="title">
+  <h1>Создание новой карточки</h1>
+</div>
+<div class="card">
+  <form action="" [formGroup]="form">
+    <div class="form-row">
+      <div class="column">
+        <div class="form-field">
+          <label for="car-name">Название авто:</label>
+          <input type="text" id="car-name" class="input-field input-name" formControlName="Name">
+        </div>
+        <div class="form-field">
+          <label for="car-origin">Страна производитель:</label>
+          <input type="text" placeholder="USA/Europe" id="car-origin" class="short-input input-field" formControlName="Origin">
+        </div>
+        <div class="form-field">
+          <label for="car-horsepower">Количество лошадиных сил:</label>
+          <input type="number" id="car-horsepower" class="short-input input-field" formControlName="Horsepower">
+        </div>
+        <div class="form-field">
+          <label for="car-cylinders">Количество цилиндров:</label>
+          <input type="number" id="car-cylinders" class="short-input input-field" formControlName="Cylinders">
+        </div>
+        <div class="form-field">
+          <label for="car-mpg">MpG:</label>
+          <input type="number" id="car-mpg" class="short-input input-field" formControlName="Miles_per_Gallon">
+        </div>
+        <div class="img-content">
+          <h3>Скоро появится возможность добавить фото авто</h3>
+        </div>
+      </div>
+      <div class="column">
+        <div class="form-field">
+          <label for="car-price">Цена:</label>
+          <input type="number" id="car-price" class="short-input input-field" formControlName="Price">
+        </div>
+        <div class="form-field">
+          <label for="car-weight">Вес авто:</label>
+          <input type="number" id="car-weight" class="short-input input-field" formControlName="Weight_in_lbs">
+        </div>
+        <div class="form-field">
+          <label for="car-displacement">Объем двигателя:</label>
+          <input type="number" id="car-displacement" class="short-input input-field" formControlName="Displacement">
+        </div>
+        <div class="form-field">
+          <label for="car-acceleration">Ускорение:</label>
+          <input type="number" id="car-acceleration" class="short-input input-field" formControlName="Acceleration">
+        </div>
+        <div class="form-field">
+          <label for="car-currency">Валюта:</label>
+          <mat-form-field appearance="fill">
+            <mat-label>Выбрать валюту</mat-label>
+            <mat-select disableRipple formControlName="Currency">
+              <mat-option *ngFor="let option of currencyOptions" value="{{option}}">{{ option }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <label for="car-year">Год выпуска:</label>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Введите дату:</mat-label>
+              <input matInput id="car-year" [matDatepicker]="dp" formControlName="Year">
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="button-group">
+          <button mat-raised-button class="addcard-button" (click)="addNewCar()" [disabled]="form.invalid">Добавить</button>
+          <button mat-raised-button class="cancel-button" [routerLink]="['/']">Отмена</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
